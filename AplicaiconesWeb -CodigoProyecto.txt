@@ -1,0 +1,43 @@
+from flask import Flask, jsonify 
+
+app = Flask(__name__)  
+
+@app.route('/mensaje',methods=['GET'])
+def mensaje():
+    return 'Primera aplicacion Web'
+
+@app.route('/listaPersonas',methods=['GET'])
+def listar():
+    listaPersonas = [{"Nombre": "Jorge","Edad":30,"Profesion": "Ingeniero"},
+                     {"Nombre": "Ana","Edad":23,"Profesion": "Contadora"},
+                     {"Nombre": "Juan","Edad":20,"Profesion": "Medico"}]
+    return jsonify(listaPersonas)
+
+@app.route('/listaProyectos',methods=['GET'])
+def listarProyectos():
+    listaProyectos = [{"Nombre del Proyecto":"Mina el dorado",
+                       "Ubicacion":"Antioquia, Colombia",
+                       "Mineral":"Oro",
+                       "Inversion inicial USD":15000000,
+                       "Vida ultil del proyecto (años)":10,
+                       "Produccion anual (Onzas)":2000,
+                       "Precio mineral (USD/onza)":1900,
+                       "Costo operativo anual (USD)":1500000,
+                       "VAN (USD)":4500000,
+                       "TIR (%)":8.7},
+                      {"Nombre del Proyecto":"Mina la esperanza",
+                       "Ubicacion":"La Guajira, Colombia",
+                       "Mineral":"OCarbón térmico",
+                       "Inversion inicial USD":40000000,
+                       "Vida ultil del proyecto (años)":15,
+                       "Produccion anual (Toneladas)":500000,
+                       "Precio mineral (USD/onza)":75,
+                       "Costo operativo anual (USD)":8000000,
+                       "VAN (USD)":9800000,
+                       "TIR (%)":14.2}]
+                       
+                    
+    return jsonify(listaProyectos)
+
+if __name__ == '__main__':
+    app.run(debug=True)
